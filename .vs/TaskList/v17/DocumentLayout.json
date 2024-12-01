@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\luanh\\_src\\TaskList\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C8ED44F0-8591-40F0-B270-056DD761C3F8}|TaskList\\TaskList.csproj|c:\\users\\luanh\\_src\\tasklist\\tasklist\\views\\tasks\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C8ED44F0-8591-40F0-B270-056DD761C3F8}|TaskList\\TaskList.csproj|solutionrelative:tasklist\\views\\tasks\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C8ED44F0-8591-40F0-B270-056DD761C3F8}|TaskList\\TaskList.csproj|c:\\users\\luanh\\_src\\tasklist\\tasklist\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8ED44F0-8591-40F0-B270-056DD761C3F8}|TaskList\\TaskList.csproj|solutionrelative:tasklist\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8ED44F0-8591-40F0-B270-056DD761C3F8}|TaskList\\TaskList.csproj|c:\\users\\luanh\\_src\\tasklist\\tasklist\\views\\tasks\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C8ED44F0-8591-40F0-B270-056DD761C3F8}|TaskList\\TaskList.csproj|solutionrelative:tasklist\\views\\tasks\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,26 +26,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\luanh\\_src\\TaskList\\TaskList\\Views\\Tasks\\Index.cshtml",
               "RelativeDocumentMoniker": "TaskList\\Views\\Tasks\\Index.cshtml",
               "ToolTip": "C:\\Users\\luanh\\_src\\TaskList\\TaskList\\Views\\Tasks\\Index.cshtml",
               "RelativeToolTip": "TaskList\\Views\\Tasks\\Index.cshtml",
-              "ViewState": "AQIAACAAAAAAAAAAAAAvwDEAAAAVAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAAAIwC8AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-25T01:55:01.473Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TasksController.cs",
               "DocumentMoniker": "C:\\Users\\luanh\\_src\\TaskList\\TaskList\\Controllers\\TasksController.cs",
               "RelativeDocumentMoniker": "TaskList\\Controllers\\TasksController.cs",
               "ToolTip": "C:\\Users\\luanh\\_src\\TaskList\\TaskList\\Controllers\\TasksController.cs",
               "RelativeToolTip": "TaskList\\Controllers\\TasksController.cs",
-              "ViewState": "AQIAADIAAAAAAAAAAAAwwFAAAAAAAAAA",
+              "ViewState": "AQIAAHMAAAAAAAAAAAAmwIUAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-25T01:13:37.937Z",
               "EditorCaption": ""

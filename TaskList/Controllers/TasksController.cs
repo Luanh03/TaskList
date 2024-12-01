@@ -35,6 +35,48 @@ namespace TaskList.Controllers
         }
 
         //Metódo para reordenar com base na ordem de apresentação
+        public async Task<IActionResult> ChangeOrder(int id, string direction)
+        {
+            var currentTask = await _context.Tasks.FindAsync(id);
+            if (currentTask == null)
+            {
+                return NotFound();
+            }
+
+            Tasks adjacentTask = null;
+
+            if (direction == "up")
+            {
+                adjacentTask = await _context.Tasks
+                    .Where(t => t.PresentationOrder < currentTask.PresentationOrder)
+                    .OrderByDescending(t => t.PresentationOrder)
+                    .FirstOrDefaultAsync();
+            }
+            else if (direction == "down")
+            {
+                adjacentTask = await _context.Tasks
+                    .Where(t => t.PresentationOrder > currentTask.PresentationOrder)
+                    .OrderBy(t => t.PresentationOrder)
+                    .FirstOrDefaultAsync();
+            }
+
+            if (adjacentTask == null)
+            {
+                return BadRequest("Movimento inválido.");
+            }
+
+            // Troca as ordens
+            int tempOrder = currentTask.PresentationOrder;
+            currentTask.PresentationOrder = adjacentTask.PresentationOrder;
+            adjacentTask.PresentationOrder = tempOrder;
+
+            _context.Tasks.Update(currentTask);
+            _context.Tasks.Update(adjacentTask);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
         //Método POST Create
         [HttpPost]
@@ -82,26 +124,37 @@ namespace TaskList.Controllers
         //Método POST Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Cost,Deadline,PresentationOrder")] Tasks task)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Cost,Deadline")] Tasks task)
         {
             if (id != task.Id)
             {
                 return NotFound();
             }
+
             if (ModelState.IsValid)
             {
-                //Variável para conferir existência do nome 
+                // Verificar existência de tarefa com o mesmo nome (exceto a atual)
                 var taskExisting = _context.Tasks.FirstOrDefault(t => t.Name == task.Name && t.Id != id);
 
-                if(taskExisting != null)
+                if (taskExisting != null)
                 {
-                    //Adicionando erro ao modelo indicado
+                    // Adicionando erro ao modelo
                     ModelState.AddModelError("Name", "Tarefa com nome já existente.");
                     return View(task);
                 }
 
                 try
-                { 
+                {
+                    // Buscar o valor atual de PresentationOrder
+                    var existingTask = await _context.Tasks.AsNoTracking().FirstOrDefaultAsync(t => t.Id == id);
+                    if (existingTask == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Preservar PresentationOrder
+                    task.PresentationOrder = existingTask.PresentationOrder;
+
                     _context.Update(task);
                     await _context.SaveChangesAsync();
                 }
@@ -116,10 +169,12 @@ namespace TaskList.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
             return View(task);
         }
+
 
         //Método GET Delete
         public async Task<IActionResult> Delete(int? id)
